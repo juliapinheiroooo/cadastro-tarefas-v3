@@ -1,54 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #eef2f7;
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #fff0f8;
+  background-image: 
+    radial-gradient(circle, #ffcce0 1px, transparent 1px),
+    url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-size: 25px 25px, 100px 100px;
+  background-position: 0 0, center center;
+  color: #4d004d;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 640px;
+  margin: 60px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  border: 4px dashed #ffb6c1;
+  box-shadow: 0 0 25px rgba(255, 182, 193, 0.6);
+  position: relative;
+  overflow: hidden;
+  animation: floatBox 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatBox {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+.container::before,
+.container::after {
+  font-size: 60px;
+  color: #ffe0eb;
+  position: absolute;
+  z-index: 0;
+  animation: twinkle 3s infinite ease-in-out alternate;
+}
+
+.container::before {
+  top: -20px;
+  left: 10px;
+  transform: rotate(-10deg);
+}
+.container::after {
+  bottom: -20px;
+  right: 20px;
+  transform: rotate(15deg);
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+h1, h3 {
+  text-align: center;
+  color: #d63384;
+  position: relative;
+  z-index: 1;
+  animation: slideIn 1.2s ease forwards;
+}
+
+h1::after {
+  content: " ✨🌸";
+}
+h3::after {
+  content: " 💕🌈";
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 25px;
+  z-index: 1;
+}
+
+input, button {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #f5b5d6;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #ff69b4;
+  box-shadow: 0 0 10px #ffc1da;
+}
+
+button {
+  background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 105, 180, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 105, 180, 0.4); }
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ff85c1, #ffd1e6);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 10px;
+  background: #fff8fc;
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+}
+
+th, td {
+  border: 1px solid #f5b5d6;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #ff69b4;
+  color: white;
+  font-weight: 600;
+}
+
+/* Fade in tudo */
+.container, form, table {
+  animation: fadeIn 1.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
-  
-  .container {
-    max-width: 600px;
-    margin: 40px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  
-  h1, h3 {
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  input, button {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  button {
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-  }
-  
-  th {
-    background-color: #2563eb;
-    color: white;
-  }
-  
+}
